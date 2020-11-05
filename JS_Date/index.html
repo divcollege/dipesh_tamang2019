@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width = device-width,initial-scale = 1">
+	<title>Dynamic color change in JS</title>
+	<style>
+		body{
+			display: flex;
+			flex-direction: column;
+
+			align-items: center;
+		}
+		h1{
+			text-align: center;
+		}
+		.container{
+			margin:25px;
+		}
+		.box{
+			height: 70vh;
+			/*width: 70vh;*/
+			background: red;
+			box-shadow: 4px 2px 4px 5px gray;
+		}
+		.btn{
+			padding: 10px;
+			border-radius: 4px;
+			background: blue;
+			color: #fff;
+			margin-top :20px;
+			font-size: 15px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1 id="getTime"> </h1>
+		<h1 id="todayDate" style="color: blue"></h1>
+		<h1>Dynamic Color Change in JavaScript</h1>
+		<div class="box" id="box">
+			
+		</div>
+		<button class="btn" onclick="changeColor()">Change Color</button>
+	</div>
+	<script>
+		var Colors = ['blue','green','pink','purple','gray','skyblue','lightgreen'];
+		var i = 0;
+		function change(){
+				console.log(Colors[i]);
+						document.getElementById('box').style.background = Colors[i];
+					i++;
+					if (i>Colors.length) {
+						i=0;
+					}
+			
+		}
+
+		function changeColor(){
+			
+			setInterval(function(){
+			change();
+			
+		},1000);
+		}
+
+		
+		
+		var x = new Date();
+		var dt = x.toDateString();
+
+		document.getElementById('todayDate').innerHTML =  dt;
+				
+		
+		function getTime(){
+			var x = new Date();
+			var t = x.toLocaleTimeString();
+			document.getElementById('getTime').innerHTML = 'Current Time : '+t;
+			console.log(t);
+		}
+		setInterval(function(){
+			getTime();
+		},1000);
+		getTime();
+
+	</script>
+
+</body>
+</html>
